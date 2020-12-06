@@ -58,7 +58,11 @@ typedef enum
 
 #define MAX_LBM_HEIGHT 480
 
+#ifndef _MSC_VER
 extern void R_Printf(int level, const char* msg, ...) __attribute__ ((format (printf, 2, 3)));
+#else
+extern void R_Printf(int level, const char *msg, ...);
+#endif
 
 extern void LoadPCX(char *origname, byte **pic, byte **palette, int *width, int *height);
 extern void GetPCXInfo(char *filename, int *width, int *height);

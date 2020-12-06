@@ -303,7 +303,11 @@ float BigFloat(float l);
 float LittleFloat(float l);
 
 void Swap_Init(void);
+#ifndef _MSC_VER
 char *va(char *format, ...)  __attribute__ ((format (printf, 1, 2)));
+#else
+char *va(char *format, ...);
+#endif
 
 /* ============================================= */
 

@@ -709,11 +709,24 @@ void FS_CreatePath(char *path);
 
 void Com_BeginRedirect(int target, char *buffer, int buffersize, void (*flush)(int, char *));
 void Com_EndRedirect(void);
+#ifndef _MSC_VER
 void Com_Printf(char *fmt, ...) __attribute__ ((format (printf, 1, 2)));
 void Com_DPrintf(char *fmt, ...) __attribute__ ((format (printf, 1, 2)));
+#else
+void Com_Printf(char *fmt, ...);
+void Com_DPrintf(char *fmt, ...);
+#endif
 void Com_VPrintf(int print_level, const char *fmt, va_list argptr); /* print_level is PRINT_ALL or PRINT_DEVELOPER */
+#ifndef _MSC_VER
 void Com_MDPrintf(char *fmt, ...) __attribute__ ((format (printf, 1, 2)));
+#else
+void Com_MDPrintf(char *fmt, ...);
+#endif
+#ifndef _MSC_VER
 YQ2_ATTR_NORETURN void Com_Error(int code, char *fmt, ...) __attribute__ ((format (printf, 2, 3)));
+#else
+YQ2_ATTR_NORETURN void Com_Error(int code, char *fmt, ...);
+#endif
 YQ2_ATTR_NORETURN void Com_Quit(void);
 
 /* Ugly hack: Apprently (our?) MinGW-gcc under Windows
